@@ -1,0 +1,278 @@
+╔═══════════════════════════════════════════════════════════════╗
+║        WEDDING INVITATION — CUSTOMIZATION GUIDE             ║
+╚═══════════════════════════════════════════════════════════════╝
+
+This guide explains every detail you need to personalize and deploy
+your wedding invitation.
+
+
+═══════════════════════════════════════════════════
+ PART 1 — ADDING YOUR PERSONAL DETAILS
+═══════════════════════════════════════════════════
+
+All text changes are in: index.html
+Open it in VS Code and search for the placeholder text to replace.
+
+
+┌─────────────────────────────────────────────────┐
+│  1.1  COUPLE NAMES                              │
+└─────────────────────────────────────────────────┘
+
+Search & replace ALL occurrences:
+  "Aarav"  →  Groom's first name
+  "Meera"  →  Bride's first name
+  "A & M"  →  Your initials (e.g., "R & P")
+  "A&M"    →  Your initials
+
+Files to update:
+  • index.html  — Title tag, hero section, invitation signature,
+                  preloader, closing section, footer
+  • script.js   — No name references (all in HTML)
+
+
+┌─────────────────────────────────────────────────┐
+│  1.2  WEDDING DATE                              │
+└─────────────────────────────────────────────────┘
+
+In index.html:
+  • Hero section: Change "Saturday, the Twentieth of December..."
+  • Event cards: Update each event date and time
+
+In script.js:
+  • Line with: const weddingDate = new Date('2026-12-20T10:00:00');
+  • Change to your date in format: 'YYYY-MM-DDTHH:MM:SS'
+  • Example: new Date('2027-03-15T11:00:00')
+
+
+┌─────────────────────────────────────────────────┐
+│  1.3  EVENT DETAILS                             │
+└─────────────────────────────────────────────────┘
+
+In index.html, find the "events" section. Each event card has:
+
+  <h3 class="event-name">Mehendi</h3>           ← Event name
+  <p class="event-date">Thursday, 17th Dec</p>  ← Date
+  <p class="event-time">4:00 PM onwards</p>     ← Time
+  <p class="event-venue">The Garden Pavilion</p> ← Venue
+
+Update each card. You can also:
+  • Add more cards by copying an <div class="event-card"> block
+  • Remove cards you don't need
+  • Change the emoji icon in <div class="event-icon">
+
+
+┌─────────────────────────────────────────────────┐
+│  1.4  VENUE DETAILS                             │
+└─────────────────────────────────────────────────┘
+
+In the "venue" section of index.html:
+
+  1. Change venue name: "Grand Heritage Resort & Spa"
+  2. Change address text
+  3. Update Google Maps link:
+     • Go to Google Maps → Search your venue → Click "Share" → "Embed a map"
+     • Copy the iframe src URL and replace the existing one
+     • Also update the "Open in Maps" button href:
+       href="https://maps.google.com/?q=YOUR+VENUE+NAME+CITY"
+
+
+┌─────────────────────────────────────────────────┐
+│  1.5  OUR STORY TIMELINE                        │
+└─────────────────────────────────────────────────┘
+
+In the "story" section, update each timeline item:
+  • <span class="timeline-date">June 2020</span>     ← When
+  • <h3 class="timeline-title">First Meeting</h3>    ← Milestone
+  • <p class="timeline-desc">A chance encounter...</p> ← Your story
+
+You can add or remove timeline items. Just follow the pattern:
+  - Odd items: class="timeline-item timeline-item--left"
+  - Even items: class="timeline-item timeline-item--right"
+
+
+┌─────────────────────────────────────────────────┐
+│  1.6  INVITATION TEXT                           │
+└─────────────────────────────────────────────────┘
+
+In the "invitation" section, update the <p> tags inside
+.invitation-text with your own heartfelt message.
+
+
+┌─────────────────────────────────────────────────┐
+│  1.7  CLOSING MESSAGE                           │
+└─────────────────────────────────────────────────┘
+
+In the "closing" section, update:
+  • .closing-text   — Your thank you message
+  • .closing-quote  — Your favorite love quote
+
+
+═══════════════════════════════════════════════════
+ PART 2 — ADDING YOUR PHOTOS
+═══════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────┐
+│  2.1  PREPARING YOUR IMAGES                     │
+└─────────────────────────────────────────────────┘
+
+For best performance:
+  • Resize images to max 1200px wide (for gallery)
+  • Use JPEG format for photos (smaller file size)
+  • Compress using: https://tinypng.com or https://squoosh.app
+  • Aim for under 200KB per image
+  • Name files descriptively: pre-wedding-1.jpg, proposal.jpg, etc.
+
+
+┌─────────────────────────────────────────────────┐
+│  2.2  ADDING IMAGES TO THE PROJECT              │
+└─────────────────────────────────────────────────┘
+
+Step 1: Place your photos in the /images/ folder:
+  wedding-invitation/
+    images/
+      gallery-1.jpg
+      gallery-2.jpg
+      gallery-3.jpg
+      ... (add 6-8 photos)
+
+Step 2: Update index.html gallery section.
+  Replace each Unsplash URL with your local path:
+
+  BEFORE:
+    <img src="https://images.unsplash.com/photo-xxx?w=600&h=400&fit=crop"
+
+  AFTER:
+    <img src="images/gallery-1.jpg"
+
+Step 3: Update alt text for accessibility:
+    alt="Aarav and Meera at their engagement"
+
+
+┌─────────────────────────────────────────────────┐
+│  2.3  GALLERY LAYOUT TIPS                       │
+└─────────────────────────────────────────────────┘
+
+The gallery uses a CSS grid. You can control sizes:
+  • Normal:  <div class="gallery-item">            — 1x1 cell
+  • Tall:    <div class="gallery-item gallery-item--tall">  — spans 2 rows
+  • Wide:    <div class="gallery-item gallery-item--wide">  — spans 2 columns
+
+Best layout: Use 1-2 tall images and 1 wide image among 8 total.
+Portrait photos work great as "tall" items.
+
+
+┌─────────────────────────────────────────────────┐
+│  2.4  BACKGROUND MUSIC (Optional)               │
+└─────────────────────────────────────────────────┘
+
+Replace the placeholder music:
+  1. Add your MP3 file to the project root or a /music/ folder
+  2. In index.html, find the <audio> tag and update:
+     <source src="music/your-song.mp3" type="audio/mp3" />
+
+Tip: Choose a soft instrumental track. Keep file under 3MB.
+     Royalty-free options: https://uppbeat.io or https://pixabay.com/music/
+
+
+═══════════════════════════════════════════════════
+ PART 3 — DEPLOYING TO NETLIFY (Recommended)
+═══════════════════════════════════════════════════
+
+You have TWO options:
+
+
+┌─────────────────────────────────────────────────┐
+│  OPTION A — Drag & Drop (Easiest, 2 minutes)    │
+└─────────────────────────────────────────────────┘
+
+  1. Go to https://app.netlify.com
+  2. Sign up / Log in (use GitHub, Google, or email)
+  3. On the dashboard, you'll see "Deploy manually"
+     or go to: https://app.netlify.com/drop
+  4. Drag the entire "wedding-invitation" folder onto the page
+  5. Done! You'll get a URL like: https://random-name.netlify.app
+  6. Click "Site settings" → "Change site name"
+     → Set it to something like: aarav-and-meera-wedding
+     → Your URL becomes: https://aarav-and-meera-wedding.netlify.app
+
+
+┌─────────────────────────────────────────────────┐
+│  OPTION B — Git + Auto Deploy (Best long-term)  │
+└─────────────────────────────────────────────────┘
+
+  1. Create a GitHub repository (private recommended for a wedding site)
+
+  2. Push your code:
+       cd C:\Users\Naumanuddin.Kazi\Desktop\wedding-invitation
+       git init
+       git add .
+       git commit -m "Wedding invitation site"
+       git remote add origin https://github.com/YOUR-USERNAME/wedding-invitation.git
+       git push -u origin main
+
+  3. Go to https://app.netlify.com → "Add new site" → "Import an existing project"
+
+  4. Connect your GitHub account → Select the repository
+
+  5. Build settings (leave defaults):
+       • Build command: (leave empty)
+       • Publish directory: .
+
+  6. Click "Deploy site"
+
+  7. Every time you push changes to GitHub, Netlify auto-deploys!
+
+
+┌─────────────────────────────────────────────────┐
+│  3.3  CUSTOM DOMAIN (Optional)                  │
+└─────────────────────────────────────────────────┘
+
+  1. Buy a domain (e.g., aaravandmeera.com) from:
+     Namecheap, GoDaddy, Google Domains, Cloudflare
+
+  2. In Netlify: Site settings → Domain management → Add custom domain
+
+  3. Follow Netlify's DNS instructions (they provide free SSL too)
+
+
+┌─────────────────────────────────────────────────┐
+│  3.4  VIEWING RSVP RESPONSES                    │
+└─────────────────────────────────────────────────┘
+
+  Netlify captures all form submissions automatically!
+
+  1. Go to https://app.netlify.com
+  2. Select your site
+  3. Click "Forms" in the sidebar
+  4. You'll see all RSVP responses with:
+     - Name
+     - Number of guests
+     - Attendance (yes/no)
+     - Timestamp
+
+  5. You can also set up email notifications:
+     Site settings → Forms → Form notifications → Add notification
+     → Email notification → Enter your email
+
+  6. To export: Click "Download as CSV" on the Forms page
+
+
+═══════════════════════════════════════════════════
+ PART 4 — QUICK CHECKLIST BEFORE DEPLOYING
+═══════════════════════════════════════════════════
+
+  □ Replace "Aarav" & "Meera" with real names (all occurrences)
+  □ Replace "A & M" initials everywhere
+  □ Update wedding date in hero + script.js countdown
+  □ Update all 4 event cards (dates, times, venues)
+  □ Update venue name, address, and Google Maps embed
+  □ Write your own story timeline
+  □ Update invitation text and closing message
+  □ Add 6-8 personal photos to /images/ folder
+  □ Update gallery <img src=""> paths
+  □ (Optional) Add background music MP3
+  □ (Optional) Update Google Maps link in "Open in Maps" button
+  □ Test on mobile (Chrome DevTools → Toggle device toolbar)
+  □ Deploy to Netlify
+  □ Set up email notifications for RSVP responses
+  □ Share the link with your guests! 🎉

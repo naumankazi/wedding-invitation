@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nauman & Nabeela — Wedding Invitation</title>
+  <meta name="description" content="You are cordially invited to celebrate the union of Nauman & Nabeela" />
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nauman & Nabeela — Wedding Invitation" />
+  <meta property="og:description" content="You are cordially invited to celebrate the union of Nauman & Nabeela on June 10th, 2026" />
+  <meta property="og:image" content="images/preview.jpg" />
+  <meta property="og:url" content="https://nn-wedding-invitation.netlify.app/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nauman & Nabeela — Wedding Invitation" />
+  <meta name="twitter:description" content="You are cordially invited to celebrate the union of Nauman & Nabeela on June 10th, 2026" />
+  <meta name="twitter:image" content="images/preview.jpg" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.google.com" />
+  <link rel="preconnect" href="https://maps.googleapis.com" />
+
+  <!-- DNS Prefetch for faster resolution -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://www.google.com" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Force scroll to top before browser restores position -->
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       PRELOADER
+  ═══════════════════════════════════════════ -->
+  <div id="preloader" class="preloader" aria-label="Loading">
+    <div class="preloader-inner">
+      <div class="preloader-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+      <div class="preloader-initials">
+        N <span class="preloader-amp">&amp;</span> N
+      </div>
+      <div class="preloader-line"></div>
+      <div class="preloader-text">Loading your invitation…</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SCROLL PROGRESS BAR
+  ═══════════════════════════════════════════ -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION DOTS
+  ═══════════════════════════════════════════ -->
+  <nav id="nav-dots" class="nav-dots" aria-label="Section navigation">
+    <button data-target="#hero" class="nav-dot active" aria-label="Hero section"><span></span></button>
+    <button data-target="#invitation" class="nav-dot" aria-label="Invitation"><span></span></button>
+    <!-- <button data-target="#story" class="nav-dot" aria-label="Our Story"><span></span></button> -->
+    <button data-target="#events" class="nav-dot" aria-label="Events"><span></span></button>
+    <button data-target="#venue" class="nav-dot" aria-label="Venue"><span></span></button>
+    <!-- <button data-target="#gallery" class="nav-dot" aria-label="Gallery"><span></span></button> -->
+    <button data-target="#countdown" class="nav-dot" aria-label="Countdown"><span></span></button>
+    <button data-target="#rsvp" class="nav-dot" aria-label="RSVP"><span></span></button>
+    <button data-target="#closing" class="nav-dot" aria-label="Closing"><span></span></button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       MUSIC TOGGLE
+  ═══════════════════════════════════════════ -->
+  <button id="music-toggle" class="music-toggle" aria-label="Toggle background music">
+    <svg class="music-icon music-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+    </svg>
+    <svg class="music-icon music-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+      <line x1="1" y1="1" x2="23" y2="23" stroke-width="2.5"/>
+    </svg>
+  </button>
+
+  <!-- Background audio (royalty-free placeholder) -->
+  <audio id="bg-music" loop preload="none">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3" />
+  </audio>
+
+  <!-- ═══════════════════════════════════════════
+       PARTICLE CANVAS (ambient background)
+  ═══════════════════════════════════════════ -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════════ -->
+  <section id="hero" class="section hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-pre-title">Together with their families</p>
+      <h1 class="hero-names">
+        <span class="hero-name hero-name--groom">Nauman</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="hero-name hero-name--bride">Nabeela</span>
+      </h1>
+      <div class="hero-divider"><span></span></div>
+      <p class="hero-tagline">Request the pleasure of your company</p>
+      <div class="hero-date">
+        <div class="hero-date-main">
+          <span class="hero-date-month">June</span>
+          <span class="hero-date-num">7</span>
+          <span class="hero-date-month">2026</span>
+        </div>
+        <div class="hero-date-sep">
+          <span class="hero-date-line"></span>
+          <span>&amp;</span>
+          <span class="hero-date-line"></span>
+        </div>
+        <div class="hero-date-main">
+          <span class="hero-date-month">June</span>
+          <span class="hero-date-num">10</span>
+          <span class="hero-date-month">2026</span>
+        </div>
+        <span class="hero-date-inshallah">إِنْ شَاءَ ٱللَّٰهُ</span>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span class="scroll-indicator-text">Scroll to begin</span>
+      <div class="scroll-indicator-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — INVITATION MESSAGE
+  ═══════════════════════════════════════════ -->
+  <section id="invitation" class="section invitation">
+    <div class="container">
+      <div class="section-ornament">✦</div>
+      <h2 class="section-title invitation-title">You Are Invited</h2>
+      <div class="invitation-text">
+        <p>With hearts full of joy and love, we invite you to witness and celebrate the beginning of our forever. Your presence and blessings would mean the world to us as we embark on this beautiful journey together.</p>
+        <p>Join us for an evening of love, laughter, and happily ever after.</p>
+      </div>
+      <div class="invitation-signature">
+        <span>With love,</span>
+        <span class="signature-names">Mr. &amp; Mrs. Kazi</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 4 — EVENT DETAILS
+  ═══════════════════════════════════════════ -->
+  <section id="events" class="section events">
+    <div class="container">
+      <div class="section-ornament">✦</div>
+      <h2 class="section-title">Celebrations</h2>
+      <p class="section-subtitle">Join us for each cherished moment</p>
+
+      <div class="events-grid">
+
+        <!-- Event Card: Wedding -->
+        <div class="event-card glass-card event-card--highlight">
+          <div class="event-icon">💍</div>
+          <h3 class="event-name">Nikah Ceremony</h3>
+          <div class="event-divider"></div>
+          <p class="event-date">Sunday, 7th June 2026</p>
+          <p class="event-time">06:00 PM</p>
+          <p class="event-venue">Al Hafiz Masjid, Ghasipura, Bhopal</p>
+        </div>
+
+        <!-- Event Card: Reception -->
+        <div class="event-card glass-card">
+          <div class="event-icon">🎉</div>
+          <h3 class="event-name">Reception</h3>
+          <div class="event-divider"></div>
+          <p class="event-date">Wednesday, 10th June 2026</p>
+          <p class="event-time">7:00 PM onwards</p>
+          <p class="event-venue">Aziz Mohammed Community Hall, Surat</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 5 — VENUE
+  ═══════════════════════════════════════════ -->
+  <section id="venue" class="section venue">
+    <div class="container">
+      <div class="section-ornament">✦</div>
+      <h2 class="section-title">The Venue</h2>
+      <p class="section-subtitle">Where our forever begins</p>
+
+      <div class="venue-content">
+        <div class="venue-info glass-card">
+          <h3 class="venue-name">Aziz Mohammed Community Hall</h3>
+          <p class="venue-address">New Rander Road, Surat, Gujarat, India — 395009</p>
+          <a href="https://maps.app.goo.gl/qvD5GfrNms8sUxSMA" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Maps
+          </a>
+        </div>
+        <div class="venue-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1859.756368697538!2d72.80034005641934!3d21.21150708326599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04c27013950db%3A0x4779acd001e0e0c1!2sAziz%20Mohammad%20Community%20Hall!5e0!3m2!1sen!2sin!4v1777532341901!5m2!1sen!2sin"
+            width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Wedding Venue Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 7 — COUNTDOWN TIMER
+  ═══════════════════════════════════════════ -->
+  <section id="countdown" class="section countdown">
+    <div class="container">
+      <div class="section-ornament">✦</div>
+      <h2 class="section-title">Counting Down</h2>
+      <p class="section-subtitle">To the day our hearts become one</p>
+
+      <div class="countdown-timer">
+        <div class="countdown-unit">
+          <div class="countdown-value" id="cd-days">000</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-value" id="cd-hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-value" id="cd-minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-value" id="cd-seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 8 — RSVP
+  ═══════════════════════════════════════════ -->
+  <section id="rsvp" class="section rsvp">
+    <div class="container">
+      <h2 class="section-title">RSVP</h2>
+      <p class="section-subtitle">Kindly let us know if you can make it</p>
+
+      <form id="rsvp-form" class="rsvp-form glass-card" name="rsvp" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <!-- Netlify spam protection (hidden) -->
+        <input type="hidden" name="form-name" value="rsvp" />
+        <p class="hidden" style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-group">
+          <label for="rsvp-name" class="form-label">Your Name</label>
+          <input type="text" id="rsvp-name" name="name" class="form-input" placeholder="Enter your full name" required autocomplete="name" enterkeyhint="next" />
+          <span class="form-focus-line"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-guests" class="form-label">Number of Guests</label>
+          <input type="number" id="rsvp-guests" name="guests" class="form-input" placeholder="Including yourself" min="1" max="10" required enterkeyhint="done" inputmode="numeric" />
+          <span class="form-focus-line"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Will you attend?</label>
+          <div class="form-radio-group">
+            <label class="form-radio">
+              <input type="radio" name="attendance" value="yes" required />
+              <span class="radio-custom"></span>
+              <span class="radio-label">Joyfully Accept</span>
+            </label>
+            <label class="form-radio">
+              <input type="radio" name="attendance" value="no" />
+              <span class="radio-custom"></span>
+              <span class="radio-label">Respectfully Decline</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-submit" id="rsvp-submit">
+          <span class="btn-text">Send RSVP</span>
+          <span class="btn-loader"></span>
+        </button>
+
+      </form>
+
+      <!-- Success message (outside form so it stays visible when form is hidden) -->
+      <div id="rsvp-success" class="rsvp-success glass-card" hidden>
+        <div class="success-icon">✓</div>
+        <h3 class="rsvp-success-title">Thank You!</h3>
+        <p class="rsvp-success-text">Your RSVP has been received. We look forward to celebrating with you!</p>
+        <p class="rsvp-success-dua">جزاك اللهُ خيرًا</p>
+      </div>
+
+      <!-- Already submitted state -->
+      <div id="rsvp-already" class="rsvp-already glass-card" hidden>
+        <div class="success-icon already-icon">✓</div>
+        <h3 class="rsvp-success-title">Thank You!</h3>
+        <p class="rsvp-success-text">Your RSVP has been received. We look forward to celebrating with you!</p>
+        <p class="already-detail" id="already-detail"></p>
+        <p class="rsvp-success-dua">جزاك اللهُ خيرًا</p>
+        <button type="button" class="btn btn-outline" id="rsvp-update-btn">Update My Response</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 9 — CLOSING
+  ═══════════════════════════════════════════ -->
+  <section id="closing" class="section closing">
+    <div class="container">
+      <div class="closing-ornament">
+        <span></span><span>♥</span><span></span>
+      </div>
+      <h2 class="closing-title">Thank You</h2>
+      <p class="closing-text">
+        Your love, support, and presence mean the world to us.<br/>
+        We cannot wait to celebrate this beautiful day with you.
+      </p>
+      <div class="closing-dua">
+        <p class="closing-dua-arabic">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+        <p class="closing-dua-english">May Allah bless you both, and shower His blessings upon you, and bring you together in goodness. (Ameen)</p>
+      </div>
+      <!-- <div class="closing-names">N &amp; N</div> -->
+
+      <!-- Footer (inside closing for scroll-snap compatibility) -->
+      <div class="closing-footer">
+        <div class="footer-monogram">
+          N <span class="preloader-amp">&amp;</span> N
+        </div>
+        <p class="footer-text">Made with love · June 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Script -->
+  <script src="script.js" defer></script>
+</body>
+</html>
